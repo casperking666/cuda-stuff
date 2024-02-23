@@ -1,0 +1,8 @@
+Running on host gpu01.bc4.acrc.priv
+Time is Fri Feb 23 21:38:49 GMT 2024
+Directory is /user/home/yf20630/cuda-stuff/APT-CUDA/exercises/cuda-intro/src_c
+Slurm job ID is 12347049
+This job runs on the following machines:
+gpu01
+GPU number: 0,1
+/tmp/slurmd/job12347049/slurm_script: line 22: ./intro.o: cannot execute binary file

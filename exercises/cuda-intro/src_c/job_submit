@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#SBATCH --job-name d2q9-bgk
+#SBATCH --nodes 1
+#SBATCH --time 00:10:00
+#SBATCH --partition teach_gpu
+#SBATCH --gres=gpu:1
+#SBATCH --account=COMS031424
+#SBATCH --output=final-test.out
+#SBATCH --exclusive 
+
+echo Running on host `hostname`
+echo Time is `date`
+echo Directory is `pwd`
+echo Slurm job ID is $SLURM_JOB_ID
+echo This job runs on the following machines:
+echo `echo $SLURM_JOB_NODELIST | uniq`
+echo GPU number: $CUDA_VISIBLE_DEVICES
+
+export OCL_DEVICE=1
+
+./intro.o
