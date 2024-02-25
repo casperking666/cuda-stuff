@@ -15,7 +15,7 @@
 void checkCUDAError(const char*);
 
 /* The number of integer elements in the array */
-#define ARRAY_SIZE 256
+#define ARRAY_SIZE 257
 
 /*
  * The number of CUDA blocks and threads per block to use.
@@ -30,12 +30,20 @@ void checkCUDAError(const char*);
 __global__ void negate(int *d_a)
 {
     /* Part 2B: negate an element of d_a */
+    int idx = threadIdx.x;
+    d_a[idx] = -1 * d_a[idx];
 }
 
 /* Multi-block version of kernel for part 2C */
-__global__ void negate_multiblock(int *d_a)
+__global__ void negate_multiblock(int *d_a, int n_elements)
 {
     /* Part 2C: negate an element of d_a, using multiple blocks this time */
+    int idx = threadIdx.x + (blockIdx.x * blockDim.x);
+    printf("index %d\n", idx);
+    // Check if the idx is within the bounds of the array
+    if (idx < n_elements) {
+        d_a[idx] = -1 * d_a[idx];
+    }
 }
 
 /* Main routine */
@@ -85,9 +93,13 @@ int main(int argc, char *argv[])
 
     /* run the kernel on the GPU */
     /* Part 2A: configure and launch kernel (un-comment and complete) */
-    /* dim3 blocksPerGrid( ); */
-    /* dim3 threadsPerBlock( ); */
-    /* negate<<< , >>>( ); */
+    int blockSize = 64;
+    int blocksNum = (ARRAY_SIZE - 1) / blockSize + 1;
+    printf("%d", blocksNum);
+    dim3 blocksPerGrid(blocksNum); 
+    dim3 threadsPerBlock(blockSize); 
+    // negate<<<blocksPerGrid, threadsPerBlock>>>(d_a);
+    negate_multiblock<<<blocksPerGrid, threadsPerBlock>>>(d_a, ARRAY_SIZE);
 
     /* wait for all threads to complete and check for errors */
     cudaDeviceSynchronize();

@@ -8,7 +8,7 @@ EXE=reconstruct
 
 SRC=reconstruct.cu reconstruct_kernels.cu utilities.cu
 
-ARCH=sm_70
+ARCH=sm_60
 
 CC=nvcc
 CFLAGS=-O3 -arch=$(ARCH)

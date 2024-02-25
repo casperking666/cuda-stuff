@@ -17,6 +17,4 @@ echo This job runs on the following machines:
 echo `echo $SLURM_JOB_NODELIST | uniq`
 echo GPU number: $CUDA_VISIBLE_DEVICES
 
-export OCL_DEVICE=1
-
-./intro.o
+./intro

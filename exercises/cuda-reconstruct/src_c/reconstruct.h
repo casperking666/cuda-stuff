@@ -12,7 +12,7 @@
 #define N 2048
 
 /* Number of iterations to run */
-#define ITERATIONS 100
+#define ITERATIONS 10000
 
 
 /* The actual CUDA kernel that runs on the GPU - 1D version by column */

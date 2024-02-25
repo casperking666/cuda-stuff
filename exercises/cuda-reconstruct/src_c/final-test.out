@@ -1,0 +1,19 @@
+Running on host gpu01.bc4.acrc.priv
+Time is Sun Feb 25 19:37:11 GMT 2024
+Directory is /user/home/yf20630/cuda-stuff/APT-CUDA/exercises/cuda-reconstruct/src_c
+Slurm job ID is 12356074
+This job runs on the following machines:
+gpu01
+GPU number: 0,1
+  Device name: Tesla P100-PCIE-16GB
+Image size: 2048x2048
+ITERATIONS: 10000
+Blocks: 8 1 1
+Threads per block: 256 1 1
+
+
+ ***TEST PASSED SUCCESSFULLY*** 
+
+
+GPU Time (Including Data Transfer): 70.270618s
+CPU Time                          : 58.370279s
